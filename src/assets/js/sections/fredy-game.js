@@ -1,4 +1,4 @@
-class Home{
+class FredyGame{
 	constructor(){
 		this.test = 'ok'
     this.init()
@@ -9,4 +9,4 @@ class Home{
 	}
 }
 
-export default Home;
+export default FredyGame;
