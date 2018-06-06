@@ -1,6 +1,7 @@
 window.$ = window.jQuery = require("jquery");
 
-import * as Gsap from 'gsap'
+import TweenMax from 'gsap'
+import * as Draggable from 'gsap/Draggable'
 
 import FredyGame from './sections/fredy-game.js'
 const fredyGame = new FredyGame()
