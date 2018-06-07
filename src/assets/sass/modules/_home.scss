@@ -3,9 +3,16 @@
     background-color: mistyrose;
     height: 500px;
     position: relative;
+    overflow: hidden;
 }
 
 #player{
     position: absolute;
     bottom: 0;
+}
+
+.bullet{
+    position: absolute;
+    width: 50px;
+    bottom:30px;
 }

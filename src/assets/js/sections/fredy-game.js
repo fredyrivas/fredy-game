@@ -1,5 +1,6 @@
 import SpriteAnim from '../sections/sprite-anim.js'
 import Controles from '../sections/controles.js'
+import Shotgun from '../sections/shotgun.js'
 
 class FredyGame {
     constructor() {
@@ -20,7 +21,13 @@ class FredyGame {
             canvasBGcolor: 'rgba(200,50,200,0)'
         })
 
-		const controles = new Controles()
+		const controles = new Controles({
+            speed: 10,
+            jumpPower: -130,
+            shotSpeed: .4,
+            gameContainer: '.gameContainer',
+            playerContainer: '#player'
+        })
 
 
         playerAnim.init()

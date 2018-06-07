@@ -1,8 +1,18 @@
+
+import Shotgun from '../sections/shotgun.js'
+
 class Controles {
-    constructor() {
+    constructor(options) {
+
+        this.speed = options.speed || 10
+        this.jumpPower = options.jumpPower || -130
+        this.gameContainer = options.gameContainer
+        this.playerContainer = options.playerContainer
+
+        this.shotSpeed = options.shotSpeed || 1
+        this.shotLimit = 0
 
         this.playerX = 0
-        this.speed = 10
         this.isJumping = false
         this.keys = {}
 
@@ -32,29 +42,45 @@ class Controles {
         if (this.keys[38] != undefined) {
             this.jump()
         }
+        if (this.keys[32] != undefined) {
+            this.shot()
+        }
 
         requestAnimationFrame(this.activateMoves.bind(this))
     }
 
     moveRight() {
-        this.playerX += this.speed
-        TweenMax.set('#player', { x: this.playerX })
+        if(this.playerX < $(this.gameContainer).width()-($(this.playerContainer).width()+this.speed)){
+            this.playerX += this.speed
+            TweenMax.set(this.playerContainer, { x: this.playerX })
+        }
     }
     moveLeft() {
-        this.playerX -= this.speed
-        TweenMax.set('#player', { x: this.playerX })
+        if(this.playerX > 0){
+            this.playerX -= this.speed
+            TweenMax.set(this.playerContainer, { x: this.playerX })
+        }
     }
     jump() {
         if (!this.isJumping) {
             this.isJumping = true
-            TweenMax.to('#player', .2, {
-                y: '-130',
+            TweenMax.to(this.playerContainer, .2, {
+                y: this.jumpPower,
                 yoyo: true,
                 repeat: 1,
                 onComplete: function() {
                     this.isJumping = false
                 }.bind(this)
             })
+        }
+    }
+    shot(){
+        if(this.shotLimit < 1){
+            this.shotLimit++
+            const shotgun = new Shotgun()
+            TweenMax.delayedCall(this.shotSpeed, function () {
+                this.shotLimit = 0
+            }.bind(this))
         }
     }
 }
