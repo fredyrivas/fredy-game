@@ -1,9 +1,12 @@
 
 .gameContainer{
     background-color: mistyrose;
-    height: 500px;
+    height: 600px;
     position: relative;
     overflow: hidden;
+    background-image: url('../img/background.jpg');
+    background-position: bottom center;
+    background-size: cover;
 }
 
 #player{
@@ -15,4 +18,24 @@
     position: absolute;
     width: 50px;
     bottom:30px;
+}
+
+
+.enemy-ground{
+    position: absolute;
+    width: 50px;
+    bottom:0;
+}
+
+.enemy-air{
+    position: absolute;
+    width: 50px;
+    top:0;
+}
+
+
+.explosion{
+    position: absolute;
+    width: 50px;
+    bottom:0;
 }

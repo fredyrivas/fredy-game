@@ -16,7 +16,19 @@ html {
 body {
 	margin: 0;
     font-family: 'open_sansregular';
-    background-image: url("../img/caballos-salvajes.jpg");
-    background-size: cover;
-    background-position: center top;
+	background-color: aliceblue;
+}
+
+h1{
+	color: blue;
+	font-size: 15px;
+	span:first-child{
+		color: green;
+	}
+	span:nth-child(2){
+		color: pink;
+	}
+	span:nth-child(3){
+		color: red;
+	}
 }

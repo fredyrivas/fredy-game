@@ -1,16 +1,15 @@
 import SpriteAnim from '../sections/sprite-anim.js'
 import Controles from '../sections/controles.js'
-import Shotgun from '../sections/shotgun.js'
+import EnemiesGenerator from '../sections/enemies-generator.js'
+
 
 class FredyGame {
     constructor() {
 
         this.init()
-
     }
 
     init() {
-        //TweenMax.to('.element1', 3, {y:'100', onUpdate:this.reviewTest.bind(this)})
         const playerAnim = new SpriteAnim({
             animWidth: 108,
             animHeight: 100,
@@ -20,28 +19,27 @@ class FredyGame {
             totalFrames: 2,
             canvasBGcolor: 'rgba(200,50,200,0)'
         })
+        playerAnim.init()
 
 		const controles = new Controles({
-            speed: 10,
-            jumpPower: -130,
-            shotSpeed: .4,
+            playerSpeed: 10,
+            jumpPower: -160,
+            shootingRepetitionSpeed: .4,
+            bulletSpeed: 3.5,
+            bulletImage: 'assets/img/bullet.png',
             gameContainer: '.gameContainer',
             playerContainer: '#player'
         })
 
-
-        playerAnim.init()
-
-    }
-
-    reviewTest() {
-        // if(Draggable.hitTest('.element1', '.element2', '50%')){
-        // 	console.log('hit puto!')
-        // }
-
-        //https://lh6.googleusercontent.com/YEZOr538ER-JlKeYG3iMVxChswAmLaj3mf9O1ttHE9U2oBEwRiNEMWwVuIkt1B0BoT087j6hd071CKlThpW7c6mPi2nNcnIdw6l05qvjMdrYzEhfuZQ7bUdz4CYxOz7RLtmGz5gz
-
-
+        const enemiesGenerator = new EnemiesGenerator({
+            groundEnemyInterval: [1,2],
+            enemyGroundImage: 'assets/img/enemy-ground.png',
+            enemyGroundSpeed: 5,
+            airEnemyInterval: [.5,2],
+            enemyAirImage: 'assets/img/bird.png',
+            enemyAirSpeed: 2,
+            playerContainer: '#player'
+        })
     }
 }
 
