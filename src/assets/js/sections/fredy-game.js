@@ -1,16 +1,20 @@
 import SpriteAnim from '../sections/sprite-anim.js'
 import Controles from '../sections/controles.js'
 import EnemiesGenerator from '../sections/enemies-generator.js'
+import TimeController from '../sections/time-controller.js'
 
 
 
 class FredyGame {
     constructor() {
 
+
         this.init()
     }
 
     init() {
+
+
         const playerAnim = new SpriteAnim({
             animWidth: 108,
             animHeight: 100,
@@ -41,6 +45,12 @@ class FredyGame {
             enemyAirSpeed: 2,
             playerContainer: '#player'
         })
+
+        this.timeController = new TimeController({
+            enemiesGenerator: enemiesGenerator
+        })
+
+
     }
 }
 

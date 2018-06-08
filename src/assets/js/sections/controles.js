@@ -1,5 +1,7 @@
-
 import Shotgun from '../sections/shotgun.js'
+import PointsController from '../sections/points-controller.js'
+
+const pointsController = new PointsController()
 
 class Controles {
     constructor(options) {
@@ -83,7 +85,8 @@ class Controles {
                 gameContainer: this.gameContainer,
                 playerContainer: this.playerContainer,
                 speed: this.bulletSpeed,
-                bulletImage: this.bulletImage
+                bulletImage: this.bulletImage,
+                pointsController: pointsController
             })
             TweenMax.delayedCall(this.shootingRepetitionSpeed, function () {
                 this.shotLimit = 0

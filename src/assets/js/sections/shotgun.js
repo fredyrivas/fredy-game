@@ -8,6 +8,8 @@ class Shotgun{
         this.speed = options.speed
         this.bulletImage = options.bulletImage
 
+        this.pointsController = options.pointsController
+
         this.init()
     }
 
@@ -52,6 +54,9 @@ class Shotgun{
 
                     $('.enemy-ground')[i].remove()
                     $(_bllt).remove()
+
+                    this.pointsController.mainPoints += 2
+                    this.pointsController.updatePoints()
                 }
             }
         }
@@ -70,6 +75,10 @@ class Shotgun{
 
                     $('.enemy-air')[j].remove()
                     $(_bllt).remove()
+
+
+                    this.pointsController.mainPoints += 5
+                    this.pointsController.updatePoints()
                 }
             }
         }

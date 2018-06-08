@@ -1,7 +1,3 @@
-import LifeController from '../sections/life-controller.js'
-
-
-
 class EnemyGround{
     constructor(options){
 
@@ -9,9 +5,11 @@ class EnemyGround{
         this.enemyImage = options.enemyImage
         this.playerContainer = options.playerContainer
 
-        this.lifeController = new LifeController()
-
         this.hitLimit = 0
+
+        this.lifeController = options.lifeController
+
+        this.enemiesGenerator = options.enemiesGenerator
 
         this.init()
     }
@@ -44,17 +42,18 @@ class EnemyGround{
         if(Draggable.hitTest(_nmy, this.playerContainer, '90%')){
             if(this.hitLimit < 1){
                 this.hitLimit++
-                console.log('hit enemigo con player!')
                 TweenMax.fromTo(this.playerContainer, .05, {alpha:1}, {alpha:.2, yoyo:true, repeat:1, onComplete:function () {
                     this.hitLimit = 0
                 }.bind(this)})
 
 
-                if(this.lifeController.lifeForGround > 0){
-                    //this.lifeController.lifeForGround -=
-                    this.lifeController.damageFromGroundenemy()
+                if(this.lifeController.lifePower > 0){
+                    this.lifeController.lifePower -= 5
+                    this.lifeController.updateLife()
                 }else{
-                    this.lifeController.lifeWastedFromGround()
+                    $('.resultsContainer').css('display', 'block')
+                    $('.finalPoints').html($('.pointsDisplay').html())
+                    this.enemiesGenerator.stopAllGenerators()
                 }
             }
         }
