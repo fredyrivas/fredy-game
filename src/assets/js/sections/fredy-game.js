@@ -3,6 +3,7 @@ import Controles from '../sections/controles.js'
 import EnemiesGenerator from '../sections/enemies-generator.js'
 
 
+
 class FredyGame {
     constructor() {
 

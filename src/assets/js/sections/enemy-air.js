@@ -1,9 +1,13 @@
+import LifeController from '../sections/life-controller.js'
+
 class EnemyAir{
     constructor(options){
 
         this.speed = options.speed
         this.enemyImage = options.enemyImage
         this.playerContainer = options.playerContainer
+
+        this.lifeController = new LifeController()
 
         this.hitLimit = 0
 
@@ -45,6 +49,14 @@ class EnemyAir{
                 TweenMax.fromTo(this.playerContainer, .05, {scale:1}, {scale:.4, yoyo:true, repeat:1, onComplete:function () {
                     this.hitLimit = 0
                 }.bind(this)})
+
+
+                // if(this.lifeController.mainLifeLevel > 0){
+                //     this.lifeController.decreaseLife()
+                // }else{
+                //     this.lifeController.lifeWasted()
+                // }
+
             }
         }
     }
