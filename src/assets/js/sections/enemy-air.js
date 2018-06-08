@@ -52,7 +52,7 @@ class EnemyAir{
 
 
                 if(this.lifeController.lifePower > 0){
-                    this.lifeController.lifePower -= 5
+                    this.lifeController.lifePower -= 10
                     this.lifeController.updateLife()
                 }else{
                     $('.resultsContainer').css('display', 'block')
